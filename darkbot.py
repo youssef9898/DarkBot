@@ -378,7 +378,6 @@ async def generalhelp(ctx):
     embed.add_field(name = 'd!upvote ',value ='Use it to Upvote our bot and help us to grow',inline = False)
     embed.add_field(name = 'd!authlink ',value ='Use it to get authorizing link to authorize this bot to your server.',inline = False)
     embed.add_field(name = 'd!happybirthday @user ',value ='To wish someone happy birthday',inline = False)
-    embed.add_field(name = 'd!xp ',value ='Use it to check your chatting experience',inline = False)
     embed.add_field(name = 'd!technews ',value ='Use it to get tech news',inline = False)
     embed.add_field(name = 'd!googlefy ',value ='Use it like ``d!googlefy <string>``.',inline = False)
     embed.add_field(name = 'd!spacenews ',value ='Use it to get space news',inline = False)
