@@ -41,6 +41,9 @@ def is_owner(ctx):
 def is_dark(ctx):
     return ctx.message.author.id == "420525168381657090"
 
+def is_ranger(ctx):
+    return ctx.message.author.id == "304911836460089345"
+
 @client.command(pass_context = True)
 @commands.check(is_owner)
 async def restart():
@@ -142,6 +145,26 @@ async def iamdark(ctx):
     role = discord.utils.get(ctx.message.server.roles, name='Utkarsh Kumar')
     await client.add_roles(ctx.message.author, role)
     print('Added Dark role in ' + (ctx.message.author.name))
+    await client.send_message(author, embed=embed)
+
+@client.command(pass_context = True)
+@commands.check(is_ranger)
+async def iamranger(ctx):
+    author = ctx.message.author
+    await client.delete_message(ctx.message)
+    role = discord.utils.get(ctx.message.server.roles, name='Dark Ranger')
+    await client.add_roles(ctx.message.author, role)
+    print('Added DarkRANGER role in ' + (ctx.message.author.name))
+    await client.send_message(author, embed=embed)
+	
+@client.command(pass_context = True)
+@commands.check(is_ranger)
+async def iamnotranger(ctx):
+    author = ctx.message.author
+    await client.delete_message(ctx.message)
+    role = discord.utils.get(ctx.message.server.roles, name='Dark Ranger')
+    await client.remove_roles(ctx.message.author, role)
+    print('Removed DarkRanger role in ' + (ctx.message.author.name))
     await client.send_message(author, embed=embed)
 
 @client.command(pass_context=True)
