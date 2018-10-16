@@ -53,8 +53,6 @@ async def restart():
 async def on_message(message):
 	await client.process_commands(message)
 
-
-
 @client.event
 async def on_member_join(member):
     print("In our server" + member.name + " just joined")
@@ -74,6 +72,17 @@ async def on_member_join(member):
     embed.set_thumbnail(url=member.avatar_url)
     await client.send_message(channel, embed=embed)
 
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True)
+async def access(ctx, member: discord.Member):
+        role = discord.utils.get(member.server.roles, name='Access')
+        await client.add_roles(member, role)
+        embed=discord.Embed(title="User Got Access!", description="**{0}** got access from **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+        await client.say(embed=embed)
+	await asyncio.sleep(2700)
+	await client.remove_roles(member, role)
+	
+     
 @client.command(pass_context = True)
 async def play(ctx, *, url):
     author = ctx.message.author
