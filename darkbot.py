@@ -79,7 +79,6 @@ async def on_member_join(member):
 async def access(ctx, member: discord.Member):
         role = discord.utils.get(member.server.roles, name='Access')
         await client.add_roles(member, role)
-	await client.send_typing(ctx.channel)
         embed=discord.Embed(title="User Got Access!", description="**{0}** got access from **{1}**!".format(member, ctx.message.author), color=0xff00f6)
         await client.say(embed=embed)
 	await asyncio.sleep(5)
