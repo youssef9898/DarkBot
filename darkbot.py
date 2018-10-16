@@ -81,8 +81,8 @@ async def access(ctx, member: discord.Member):
         await client.add_roles(member, role)
         embed=discord.Embed(title="User Got Access!", description="**{0}** got access from **{1}**!".format(member, ctx.message.author), color=0xff00f6)
         await client.say(embed=embed)
-	await asyncio.sleep(5)
-	await client.remove_roles(member, role)
+		await asyncio.sleep(5)
+		await client.remove_roles(member, role)
 	
      
 @client.command(pass_context = True)
