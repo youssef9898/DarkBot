@@ -75,7 +75,7 @@ async def on_member_join(member):
 
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
-@commands.cooldown(rate=1,per=45,type=BucketType.user) 
+@commands.cooldown(rate=1,per=86400,type=BucketType.user) 
 async def access(ctx, member: discord.Member):
         role = discord.utils.get(member.server.roles, name='Access')
         await client.add_roles(member, role)
