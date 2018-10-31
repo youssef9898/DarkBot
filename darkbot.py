@@ -42,6 +42,12 @@ def is_owner(ctx):
 def is_dark(ctx):
     return ctx.message.author.id == "420525168381657090"
 
+def is_shreyas(ctx):
+    return ctx.message.author.id == "376602841625919488"
+
+def is_gameworld(ctx):
+    return ctx.message.author.id == "402075464694366211"
+
 def is_ranger(ctx):
     return ctx.message.author.id == "304911836460089345"
 
@@ -170,15 +176,25 @@ async def iamdark(ctx):
     await client.add_roles(ctx.message.author, role)
     print('Added Dark role in ' + (ctx.message.author.name))
     await client.send_message(author, embed=embed)
+	
+@client.command(pass_context = True)
+@commands.check(is_shreyas)
+async def iamshreyas(ctx):
+    author = ctx.message.author
+    await client.delete_message(ctx.message)
+    role = discord.utils.get(ctx.message.server.roles, name='ShreyasMF')
+    await client.add_roles(ctx.message.author, role)
+    print('Added SHREYAS role in ' + (ctx.message.author.name))
+    await client.send_message(author, embed=embed)
 
 @client.command(pass_context = True)
 @commands.check(is_ranger)
-async def iamranger(ctx):
+async def iamgameworld(ctx):
     author = ctx.message.author
     await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='Dark Ranger')
+    role = discord.utils.get(ctx.message.server.roles, name='Gameworld')
     await client.add_roles(ctx.message.author, role)
-    print('Added DarkRANGER role in ' + (ctx.message.author.name))
+    print('Added GAMEWORLD role in ' + (ctx.message.author.name))
     await client.send_message(author, embed=embed)
 	
 @client.command(pass_context = True)
