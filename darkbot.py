@@ -406,6 +406,7 @@ async def modhelp(ctx):
     embed.add_field(name = 'd!rules(Kick members Permission Required)',value ='Use it like ``d!rules @user <violation type>`` to warn user',inline = False)
     embed.add_field(name = 'd!warn(Kick members Permission Required)',value ='Use it like ``d!warn @user <violation type>`` to warn any user',inline = False)    
     embed.add_field(name = 'd!norole(Kick members Permission Required) ',value ='Use it like ``d!norole @user`` to warn anyone if he/she asks for promotion',inline = False)
+    embed.add_field(name = 'd!getuser(Kick members Permission Required) ',value ='Use it like ``d!getuser @rolename`` to get list of all users having a particular role',inline = False)
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs For Information')
 
