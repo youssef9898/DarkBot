@@ -86,8 +86,7 @@ async def access(ctx, member: discord.Member):
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)
-async def getuser(ctx, role: discord.Role):
-    role = discord.utils.get(ctx.message.server.roles, name="STAFF")
+async def getuser(ctx, role: role: discord.Role = None):
     if role is None:
         await client.say('There is no "STAFF" role on this server!')
         return
