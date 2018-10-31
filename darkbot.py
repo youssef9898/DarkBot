@@ -84,21 +84,19 @@ async def access(ctx, member: discord.Member):
     await asyncio.sleep(45*60)
     await client.remove_roles(member, role)
 	
-@client.command(pass_context=True)  
-async def getuser(ctx,*args):
-  server = ctx.message.server
-  role_name = ('STAFF'.join(args))
-  role_id = server.roles[0]
-  for role in server.roles:
-    if role_name == role.name:
-      role_id = role
-      break
-  else:
-    await client.say("Role doesn't exist")
-    return    
-  for member in server.members:
-    if role_id in member.roles:
-      await client.say(f"{role_name} - {member.name}")
+@bot.command(pass_context=True)  
+async def getstaff(ctx, role: discord.Role):
+    role = discord.utils.get(ctx.message.server.roles, name="STAFF")
+    if role is None:
+        await bot.say('There is no "STAFF" role on this server!')
+        return
+    empty = True
+    for member in ctx.message.server.members:
+        if role in member.roles:
+            await bot.say("{0.name}: {0.id}".format(member))
+            empty = False
+    if empty:
+        await bot.say("Nobody has the role {}".format(role.mention))
 	
 @client.command(pass_context = True)
 async def play(ctx, *, url):
