@@ -87,7 +87,7 @@ async def access(ctx, member: discord.Member):
 @client.command(pass_context=True)  
 async def getuser(ctx,*args):
   server = ctx.message.server
-  role_name = (''.join(args))
+  role_name = ('STAFF'.join(args))
   role_id = server.roles[0]
   for role in server.roles:
     if role_name == role.name:
