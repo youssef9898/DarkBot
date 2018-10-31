@@ -84,7 +84,22 @@ async def access(ctx, member: discord.Member):
     await asyncio.sleep(45*60)
     await client.remove_roles(member, role)
 	
-     
+@client.command(pass_context=True)  
+async def getuser(ctx,*args):
+  server = ctx.message.server
+  role_name = (' '.join(args))
+  role_id = server.roles[0]
+  for role in server.roles:
+    if role_name == role.name:
+      role_id = role
+      break
+  else:
+    await client.say("Role doesn't exist")
+    return    
+  for member in server.members:
+    if role_id in member.roles:
+      await client.say(f"{role_name} - {member.name}")
+	
 @client.command(pass_context = True)
 async def play(ctx, *, url):
     author = ctx.message.author
