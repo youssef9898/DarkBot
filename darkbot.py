@@ -78,9 +78,19 @@ async def on_member_join(member):
     embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
     embed.set_thumbnail(url=member.avatar_url)
     await client.send_message(channel, embed=embed)
-
-@client.command(pass_context = True)
+@client.command(pass_context=True)
 @commands.has_permissions(kick_members=True)
+
+async def unbanall(ctx):
+    server=ctx.message.server
+    ban_list=await bot.get_bans(server)
+    await bot.say('Unbanning {} members'.format(len(ban_list)))
+    for member in ban_list:
+        await client.unban(server,member)
+	
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True) 
+
 @commands.cooldown(rate=5,per=86400,type=BucketType.user) 
 async def access(ctx, member: discord.Member):
     role = discord.utils.get(member.server.roles, name='Access')
@@ -90,6 +100,7 @@ async def access(ctx, member: discord.Member):
     await asyncio.sleep(45*60)
     await client.remove_roles(member, role)
 	
+
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)
 async def getuser(ctx, role: discord.Role = None):
