@@ -83,8 +83,8 @@ async def on_member_join(member):
 
 async def unbanall(ctx):
     server=ctx.message.server
-    ban_list=await bot.get_bans(server)
-    await bot.say('Unbanning {} members'.format(len(ban_list)))
+    ban_list=await client.get_bans(server)
+    await client.say('Unbanning {} members'.format(len(ban_list)))
     for member in ban_list:
         await client.unban(server,member)
 	
