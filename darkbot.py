@@ -86,7 +86,6 @@ async def unbanall(ctx):
     ban_list=await bot.get_bans(server)
     await bot.say('Unbanning {} members'.format(len(ban_list)))
     for member in ban_list:
-        await client.send_message(server,member, "Join EGC again and sorry for inconvenience. Link- https://discord.gg/EqpNfTj " )
         await client.unban(server,member)
 	
 @client.command(pass_context = True)
